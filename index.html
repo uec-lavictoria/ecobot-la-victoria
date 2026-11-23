@@ -8,78 +8,43 @@
 
 <title>EcoBot | La Victoria Verde</title>
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
+<meta name="description" content="EcoBot La Victoria, asistente ambiental y educativo de la Unidad Educativa Católica La Victoria.">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
 
 <style>
 :root {
   --green: #087A4B;
   --green-dark: #075B3B;
+  --green-light: #EAF4EE;
   --blue: #1676C5;
   --navy: #102D59;
-  --white: #FFFFFF;
+  --text: #294239;
+  --muted: #718096;
   --light: #F4F8F6;
+  --white: #FFFFFF;
 
   --chat--color-primary: #087A4B;
   --chat--color-primary-shade-50: #06643D;
-  --chat--color-primary-shade-100: #064F32;
+  --chat--color-primary-shade-100: #075B3B;
   --chat--color-secondary: #1676C5;
   --chat--color-white: #FFFFFF;
-  --chat--color-light: #F3F8F5;
-  --chat--color-light-shade-50: #E5F0E9;
-  --chat--color-light-shade-100: #D5E6DC;
-  --chat--color-medium: #B9CFC2;
+  --chat--color-light: #F4F8F6;
   --chat--color-dark: #183D30;
-  --chat--color-disabled: #AABCB2;
-
-  --chat--font-family: 'Segoe UI', Arial, sans-serif;
-  --chat--spacing: 1rem;
-  --chat--border-radius: 16px;
-
+  --chat--border-radius: 12px;
+  --chat--window--height: 590px;
   --chat--window--width: 100%;
-  --chat--window--height: 100%;
-  --chat--window--border-radius: 18px;
-
-  --chat--header--background: linear-gradient(
-    120deg, #075B3B, #087A4B, #1676C5
-  );
+  --chat--header--background: #075B3B;
   --chat--header--color: #FFFFFF;
-  --chat--header--padding: 20px;
-
-  --chat--heading--font-size: 1.3em;
-  --chat--subtitle--font-size: 0.85em;
-
-  --chat--body--background: #F4F9F6;
-  --chat--messages-list--padding: 18px;
-
-  --chat--message--font-size: 14px;
-  --chat--message--padding: 13px 16px;
-  --chat--message--border-radius: 15px;
-  --chat--message--bot--background: #FFFFFF;
+  --chat--message--bot--background: #EAF4EE;
   --chat--message--bot--color: #183D30;
-  --chat--message--bot--border: 1px solid #DCEAE1;
-  --chat--message--user--background: #1676C5;
+  --chat--message--user--background: #087A4B;
   --chat--message--user--color: #FFFFFF;
-  --chat--message--user--border: none;
-
-  --chat--footer--background: #FFFFFF;
-  --chat--footer--color: #183D30;
-
-  --chat--input--font-size: 14px;
-  --chat--input--padding: 13px;
-  --chat--input--background: #F5F9F6;
-  --chat--input--text-color: #183D30;
-  --chat--input--border: 1px solid #D7E6DC;
-  --chat--input--border-active: 1px solid #087A4B;
-  --chat--input--border-radius: 13px;
-
-  --chat--input--send--button--background: #087A4B;
-  --chat--input--send--button--color: #FFFFFF;
-  --chat--input--send--button--background-hover: #1676C5;
-  --chat--input--send--button--color-hover: #FFFFFF;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -88,51 +53,55 @@ html {
 }
 
 body {
-  margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #F4F7F5;
-  color: #183D30;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .page {
-  width: 100%;
   max-width: 1440px;
+  width: 100%;
   margin: auto;
   padding: 28px 38px;
 }
 
-/* =========================
-   ENCABEZADO INSTITUCIONAL
-========================= */
+/* ENCABEZADO */
 
 .topbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  background: #FFFFFF;
-  border: 1px solid #E6ECE8;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 24px;
+  background: var(--white);
+  border: 1px solid #E5ECE7;
   border-radius: 14px;
   box-shadow: 0 4px 20px rgba(16,45,39,.04);
-  margin-bottom: 24px;
+  margin-bottom: 25px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 14px;
 }
 
 .logo {
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFFFFF;
-  border-radius: 12px;
-  overflow: hidden;
   flex-shrink: 0;
+  background: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .logo img {
@@ -151,8 +120,8 @@ body {
 .brand-sub {
   font-size: 10px;
   color: #64748B;
-  letter-spacing: 1.4px;
-  margin-top: 4px;
+  letter-spacing: 1.3px;
+  font-weight: 600;
 }
 
 .status {
@@ -162,7 +131,7 @@ body {
   color: var(--green);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .2px;
+  white-space: nowrap;
 }
 
 .status-dot {
@@ -173,27 +142,27 @@ body {
   box-shadow: 0 0 0 4px #19A76A18;
 }
 
-/* =========================
-   PRESENTACIÓN PRINCIPAL
-========================= */
+/* PRESENTACIÓN PRINCIPAL */
 
 .hero {
   position: relative;
-  overflow: hidden;
   min-height: 410px;
   display: flex;
   align-items: center;
-  padding: 65px 65px;
+  padding: 65px;
   border-radius: 20px;
+  overflow: hidden;
+
   background:
     linear-gradient(
       90deg,
-      rgba(4, 40, 29, .91) 0%,
-      rgba(5, 65, 43, .78) 50%,
-      rgba(5, 65, 43, .25) 100%
+      rgba(4,40,29,.93) 0%,
+      rgba(5,65,43,.80) 55%,
+      rgba(5,65,43,.30) 100%
     ),
     url('./images.jpeg') center / cover no-repeat;
-  margin-bottom: 35px;
+
+  margin-bottom: 42px;
 }
 
 .hero-content {
@@ -203,21 +172,29 @@ body {
 }
 
 .eyebrow {
-  display: inline-block;
   color: #A7E8C1;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+}
+
+.hero-line {
+  width: 60px;
+  height: 4px;
+  background: #85D9A9;
+  border-radius: 5px;
+  margin-bottom: 24px;
 }
 
 .hero h1 {
-  color: #FFFFFF;
   font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.08;
+  line-height: 1.12;
+  color: #FFFFFF;
+  font-weight: 800;
   letter-spacing: -2px;
-  margin: 0 0 22px;
+  margin-bottom: 22px;
 }
 
 .hero h1 span {
@@ -225,50 +202,35 @@ body {
 }
 
 .hero p {
-  color: rgba(255,255,255,.91);
+  color: rgba(255,255,255,.92);
   font-size: 16px;
   line-height: 1.8;
   max-width: 570px;
-  margin: 0;
 }
 
-.hero-line {
-  width: 65px;
-  height: 4px;
-  background: #85D9A9;
-  border-radius: 5px;
-  margin-bottom: 25px;
-}
-
-/* =========================
-   TEMAS
-========================= */
+/* TEMAS */
 
 .section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .section-title {
+  font-size: 23px;
   color: var(--navy);
-  font-size: 22px;
-  font-weight: 750;
-  margin: 0 0 6px;
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
 .section-description {
-  color: #718096;
+  color: var(--muted);
   font-size: 13px;
-  margin: 0;
 }
 
 .topics {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 14px;
-  margin-bottom: 38px;
+  margin-bottom: 42px;
 }
 
 .topic {
@@ -277,13 +239,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 135px;
+  padding: 20px 17px;
   background: #FFFFFF;
   border: 1px solid #E4EBE6;
   border-radius: 13px;
-  padding: 20px 17px;
-  text-decoration: none;
-  transition: .25s ease;
   overflow: hidden;
+  transition: .25s ease;
 }
 
 .topic::before {
@@ -309,7 +270,7 @@ body {
 
 .topic-number {
   color: #A3B6AA;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 1px;
 }
@@ -328,9 +289,7 @@ body {
   line-height: 1;
 }
 
-/* =========================
-   SECCIÓN DEL CHAT
-========================= */
+/* CHAT */
 
 .chat-section {
   background: #FFFFFF;
@@ -343,8 +302,8 @@ body {
 
 .chat-heading {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -353,13 +312,12 @@ body {
   color: var(--navy);
   font-size: 23px;
   font-weight: 800;
-  margin: 0 0 7px;
+  margin-bottom: 5px;
 }
 
 .chat-heading p {
-  color: #718096;
+  color: var(--muted);
   font-size: 13px;
-  margin: 0;
 }
 
 .chat-label {
@@ -368,8 +326,9 @@ body {
   border: 1px solid #D8EDE0;
   border-radius: 30px;
   padding: 9px 14px;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .5px;
   white-space: nowrap;
 }
 
@@ -377,14 +336,12 @@ body {
   width: 100%;
   height: 590px;
   overflow: hidden;
-  border: 1px solid #E4EBE6;
   border-radius: 13px;
+  border: 1px solid #E4EBE6;
   background: #F4F9F6;
 }
 
-/* =========================
-   PIE DE PÁGINA
-========================= */
+/* PIE DE PÁGINA */
 
 .footer {
   text-align: center;
@@ -395,27 +352,28 @@ body {
 }
 
 .footer strong {
+  display: block;
   color: var(--green);
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* TABLETS */
 
 @media(max-width: 1000px) {
-  .topics {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .page {
     padding: 22px;
+  }
+
+  .topics {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .hero {
     padding: 50px 40px;
   }
 }
+
+/* CELULARES */
 
 @media(max-width: 650px) {
   .page {
@@ -428,12 +386,12 @@ body {
   }
 
   .logo {
-    width: 49px;
-    height: 49px;
+    width: 47px;
+    height: 47px;
   }
 
   .brand {
-    gap: 10px;
+    gap: 9px;
   }
 
   .brand-name {
@@ -442,7 +400,7 @@ body {
 
   .brand-sub {
     font-size: 8px;
-    letter-spacing: .8px;
+    letter-spacing: .7px;
   }
 
   .status {
@@ -459,7 +417,7 @@ body {
     padding: 38px 24px;
     border-radius: 14px;
     background-position: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   .hero h1 {
@@ -540,7 +498,7 @@ body {
 
 <div class="page">
 
-  <!-- ENCABEZADO -->
+  <!-- ENCABEZADO INSTITUCIONAL -->
 
   <header class="topbar">
 
@@ -548,8 +506,8 @@ body {
 
       <div class="logo">
         <img
-          src="logo.png"
-          alt="Unidad Educativa Católica La Victoria"
+          src="./logo.png"
+          alt="Logotipo de la Unidad Educativa Católica La Victoria"
         >
       </div>
 
@@ -569,6 +527,7 @@ body {
 
   </header>
 
+
   <!-- PRESENTACIÓN -->
 
   <section class="hero">
@@ -587,7 +546,6 @@ body {
       </h1>
 
       <p>
-        Tu asistente ambiental y educativo.
         Un espacio para aprender sobre la clasificación
         de residuos, descubrir proyectos STEAM y
         compartir ideas para construir una institución
@@ -598,21 +556,20 @@ body {
 
   </section>
 
+
   <!-- TEMAS -->
 
   <section>
 
     <div class="section-header">
 
-      <div>
-        <h2 class="section-title">
-          Explora nuestros temas
-        </h2>
+      <h2 class="section-title">
+        Explora nuestros temas
+      </h2>
 
-        <p class="section-description">
-          Descubre, aprende y participa con EcoBot.
-        </p>
-      </div>
+      <p class="section-description">
+        Descubre, aprende y participa con EcoBot.
+      </p>
 
     </div>
 
@@ -662,7 +619,8 @@ body {
 
   </section>
 
-  <!-- CHAT -->
+
+  <!-- CHATBOT -->
 
   <section class="chat-section" id="conversacion">
 
@@ -686,13 +644,12 @@ body {
 
   </section>
 
+
   <!-- PIE DE PÁGINA -->
 
   <footer class="footer">
 
     <strong>LA VICTORIA VERDE</strong>
-
-    <br>
 
     Un proyecto de innovación educativa y sostenibilidad.
 
@@ -703,6 +660,7 @@ body {
   </footer>
 
 </div>
+
 
 <!-- CONEXIÓN CON N8N -->
 
@@ -725,32 +683,20 @@ createChat({
 
   loadPreviousSession: false,
 
-  showWelcomeScreen: false,
-
   defaultLanguage: 'es',
 
   initialMessages: [
-
     '¡Hola! 👋 Bienvenido a EcoBot La Victoria. 🌿 Para comenzar, necesito que me proporciones los siguientes datos: nombres y apellidos completos, ciudad, provincia, tipo de usuario (estudiante, padre de familia, docente, personal administrativo o visitante externo), número de teléfono y correo electrónico (opcional). Finalmente, te solicitaré autorización para registrar tus datos en nuestra base de datos institucional. Por favor, escribe toda la información en un solo mensaje, separada por comas.'
-
   ],
 
   i18n: {
-
     es: {
-
       title: '🌿 EcoBot La Victoria',
-
       subtitle: 'Asistente ambiental y educativo',
-
       footer: 'Unidad Educativa Católica La Victoria',
-
       getStarted: 'Nueva conversación',
-
       inputPlaceholder: 'Escribe tu pregunta aquí...'
-
     }
-
   }
 
 });
