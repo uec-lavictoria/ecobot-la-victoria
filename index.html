@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
 
 <style>
+
 :root {
   --green: #087A4B;
   --green-dark: #075B3B;
@@ -21,7 +22,7 @@
   --navy: #102D59;
   --text: #294239;
   --muted: #718096;
-  --light: #F4F8F6;
+  --light: #F5F8F6;
   --white: #FFFFFF;
 
   --chat--color-primary: #087A4B;
@@ -64,11 +65,16 @@ a {
   color: inherit;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 .page {
-  max-width: 1440px;
   width: 100%;
+  max-width: 1440px;
   margin: auto;
-  padding: 28px 38px;
+  padding: 25px 38px;
 }
 
 /* ENCABEZADO */
@@ -81,27 +87,24 @@ a {
   padding: 15px 24px;
   background: var(--white);
   border: 1px solid #E5ECE7;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(16,45,39,.04);
+  border-radius: 12px;
   margin-bottom: 25px;
+  box-shadow: 0 4px 20px rgba(16,45,39,.04);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
 }
 
 .logo {
-  width: 58px;
-  height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: #FFFFFF;
-  border-radius: 10px;
+  width: 54px;
+  height: 54px;
+  background: white;
+  border-radius: 8px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -111,17 +114,16 @@ a {
 }
 
 .brand-name {
-  font-size: 19px;
-  font-weight: 800;
   color: var(--navy);
-  letter-spacing: -.4px;
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .brand-sub {
-  font-size: 10px;
   color: #64748B;
-  letter-spacing: 1.3px;
-  font-weight: 600;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
 }
 
 .status {
@@ -131,7 +133,6 @@ a {
   color: var(--green);
   font-size: 12px;
   font-weight: 700;
-  white-space: nowrap;
 }
 
 .status-dot {
@@ -146,29 +147,28 @@ a {
 
 .hero {
   position: relative;
-  min-height: 410px;
+  min-height: 450px;
   display: flex;
   align-items: center;
   padding: 65px;
-  border-radius: 20px;
   overflow: hidden;
+  border-radius: 17px;
+  margin-bottom: 65px;
 
   background:
     linear-gradient(
       90deg,
       rgba(4,40,29,.93) 0%,
-      rgba(5,65,43,.80) 55%,
-      rgba(5,65,43,.30) 100%
+      rgba(5,65,43,.77) 55%,
+      rgba(5,65,43,.18) 100%
     ),
     url('./portada.jpeg') center / cover no-repeat;
-
-  margin-bottom: 42px;
 }
 
 .hero-content {
+  max-width: 650px;
   position: relative;
   z-index: 2;
-  max-width: 680px;
 }
 
 .eyebrow {
@@ -177,23 +177,23 @@ a {
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .hero-line {
-  width: 60px;
+  width: 58px;
   height: 4px;
   background: #85D9A9;
   border-radius: 5px;
-  margin-bottom: 24px;
+  margin-bottom: 23px;
 }
 
 .hero h1 {
-  font-size: clamp(38px, 5vw, 64px);
+  color: white;
+  font-size: clamp(38px, 5vw, 62px);
   line-height: 1.12;
-  color: #FFFFFF;
   font-weight: 800;
-  letter-spacing: -2px;
+  letter-spacing: -1.8px;
   margin-bottom: 22px;
 }
 
@@ -202,102 +202,196 @@ a {
 }
 
 .hero p {
-  color: rgba(255,255,255,.92);
+  max-width: 560px;
+  color: rgba(255,255,255,.93);
   font-size: 16px;
-  line-height: 1.8;
-  max-width: 570px;
+  line-height: 1.9;
+  margin-bottom: 27px;
 }
 
-/* TEMAS */
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  background: white;
+  color: var(--green-dark);
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: .25s;
+}
+
+.hero-button:hover {
+  background: #DDF2E5;
+  transform: translateY(-2px);
+}
+
+/* TÍTULOS DE SECCIÓN */
+
+.section {
+  margin-bottom: 65px;
+}
 
 .section-header {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.section-kicker {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
 .section-title {
-  font-size: 23px;
   color: var(--navy);
+  font-size: 29px;
   font-weight: 800;
-  margin-bottom: 5px;
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
 .section-description {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
+  max-width: 650px;
 }
 
-.topics {
+/* DISEÑO EDITORIAL */
+
+.editorial {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-bottom: 42px;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+  align-items: stretch;
 }
 
-.topic {
-  position: relative;
+.editorial-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.editorial-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 135px;
-  padding: 20px 17px;
-  background: #FFFFFF;
-  border: 1px solid #E4EBE6;
-  border-radius: 13px;
-  overflow: hidden;
-  transition: .25s ease;
+  justify-content: center;
+  padding: 25px 15px;
 }
 
-.topic::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 0;
-  background: var(--green);
+.editorial-number {
+  color: #A5B8AB;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+.editorial-content h3 {
+  color: var(--navy);
+  font-size: 30px;
+  line-height: 1.3;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.editorial-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 23px;
+}
+
+.editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.editorial-link:hover {
+  color: var(--blue);
+}
+
+/* BLOQUE EDITORIAL INVERSO */
+
+.editorial.reverse {
+  grid-template-columns: .8fr 1.2fr;
+}
+
+.editorial.reverse .editorial-content {
+  order: 1;
+}
+
+.editorial.reverse .editorial-image {
+  order: 2;
+}
+
+/* GALERÍA */
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.gallery-item {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E4EBE6;
   transition: .25s;
 }
 
-.topic:hover {
+.gallery-item:hover {
   transform: translateY(-4px);
-  border-color: #B8DCC8;
-  box-shadow: 0 10px 25px rgba(8,122,75,.08);
+  box-shadow: 0 12px 30px rgba(16,45,39,.08);
 }
 
-.topic:hover::before {
-  height: 100%;
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-.topic-number {
-  color: #A3B6AA;
+.gallery-content {
+  padding: 22px;
+}
+
+.gallery-content span {
+  color: var(--green);
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 
-.topic-name {
+.gallery-content h3 {
   color: var(--navy);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.topic-arrow {
-  color: var(--green);
   font-size: 19px;
-  text-align: right;
-  line-height: 1;
+  margin: 7px 0;
 }
 
-/* CHAT */
+.gallery-content p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* CHATBOT */
 
 .chat-section {
-  background: #FFFFFF;
+  background: white;
   border: 1px solid #E3EBE5;
-  border-radius: 18px;
-  padding: 28px;
+  border-radius: 16px;
+  padding: 30px;
   box-shadow: 0 8px 30px rgba(16,45,39,.045);
-  scroll-margin-top: 20px;
+  scroll-margin-top: 25px;
 }
 
 .chat-heading {
@@ -305,12 +399,12 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .chat-heading h2 {
   color: var(--navy);
-  font-size: 23px;
+  font-size: 25px;
   font-weight: 800;
   margin-bottom: 5px;
 }
@@ -325,7 +419,7 @@ a {
   background: #EAF6EE;
   border: 1px solid #D8EDE0;
   border-radius: 30px;
-  padding: 9px 14px;
+  padding: 9px 15px;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .5px;
@@ -336,16 +430,40 @@ a {
   width: 100%;
   height: 590px;
   overflow: hidden;
-  border-radius: 13px;
+  border-radius: 11px;
   border: 1px solid #E4EBE6;
   background: #F4F9F6;
+}
+
+/* FRANJA INSTITUCIONAL */
+
+.institutional {
+  margin-top: 55px;
+  padding: 34px;
+  background: var(--green-dark);
+  border-radius: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.institutional h3 {
+  font-size: 21px;
+  margin-bottom: 5px;
+}
+
+.institutional p {
+  color: #C6DFD0;
+  font-size: 13px;
 }
 
 /* PIE DE PÁGINA */
 
 .footer {
   text-align: center;
-  padding: 32px 10px 15px;
+  padding: 35px 10px 12px;
   color: #77877D;
   font-size: 12px;
   line-height: 1.9;
@@ -360,34 +478,45 @@ a {
 /* TABLETS */
 
 @media(max-width: 1000px) {
+
   .page {
     padding: 22px;
   }
 
-  .topics {
-    grid-template-columns: repeat(3, 1fr);
+  .hero {
+    padding: 48px 38px;
   }
 
-  .hero {
-    padding: 50px 40px;
+  .editorial {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .editorial-image {
+    height: 340px;
+  }
+
+  .editorial-content h3 {
+    font-size: 25px;
   }
 }
 
 /* CELULARES */
 
 @media(max-width: 650px) {
+
   .page {
     padding: 12px;
   }
 
   .topbar {
-    padding: 12px;
+    padding: 11px;
     margin-bottom: 14px;
   }
 
   .logo {
-    width: 47px;
-    height: 47px;
+    width: 43px;
+    height: 43px;
   }
 
   .brand {
@@ -395,11 +524,11 @@ a {
   }
 
   .brand-name {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .brand-sub {
-    font-size: 8px;
+    font-size: 7px;
     letter-spacing: .7px;
   }
 
@@ -407,54 +536,68 @@ a {
     font-size: 0;
   }
 
-  .status-dot {
-    width: 9px;
-    height: 9px;
-  }
-
   .hero {
-    min-height: 350px;
-    padding: 38px 24px;
-    border-radius: 14px;
-    background-position: center;
-    margin-bottom: 30px;
+    min-height: 370px;
+    padding: 35px 23px;
+    border-radius: 12px;
+    margin-bottom: 42px;
   }
 
   .hero h1 {
-    font-size: 39px;
+    font-size: 38px;
     letter-spacing: -1px;
   }
 
   .hero p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  .eyebrow {
-    font-size: 9px;
-    letter-spacing: 1.5px;
-  }
-
-  .topics {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .topic {
-    min-height: 120px;
-    padding: 15px 12px;
-  }
-
-  .topic-name {
-    font-size: 12px;
+  .section {
+    margin-bottom: 45px;
   }
 
   .section-title {
-    font-size: 19px;
+    font-size: 23px;
+  }
+
+  .editorial,
+  .editorial.reverse {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .editorial-image {
+    height: 250px;
+  }
+
+  .editorial-content {
+    padding: 17px 5px 22px;
+  }
+
+  .editorial-content h3 {
+    font-size: 25px;
+  }
+
+  .editorial.reverse .editorial-content {
+    order: 2;
+  }
+
+  .editorial.reverse .editorial-image {
+    order: 1;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .gallery-item img {
+    height: 220px;
   }
 
   .chat-section {
     padding: 14px;
-    border-radius: 13px;
+    border-radius: 12px;
   }
 
   .chat-heading {
@@ -462,7 +605,7 @@ a {
   }
 
   .chat-heading h2 {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   .chat-heading p {
@@ -477,20 +620,28 @@ a {
     height: 600px;
   }
 
+  .institutional {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 23px;
+  }
+
   .footer {
     padding-top: 25px;
   }
 }
 
 @media(max-width: 370px) {
+
   .hero h1 {
-    font-size: 34px;
+    font-size: 33px;
   }
 
   .brand-sub {
-    font-size: 7px;
+    font-size: 6px;
   }
 }
+
 </style>
 </head>
 
@@ -506,9 +657,9 @@ a {
 
       <div class="logo">
         <img
-  src="./logo.jpg"
-  alt="Logotipo de la Unidad Educativa Católica La Victoria"
->
+          src="./logo.jpg"
+          alt="Logotipo de la Unidad Educativa Católica La Victoria"
+        >
       </div>
 
       <div>
@@ -528,20 +679,20 @@ a {
   </header>
 
 
-  <!-- PRESENTACIÓN -->
+  <!-- PRESENTACIÓN PRINCIPAL -->
 
   <section class="hero">
 
     <div class="hero-content">
 
       <div class="eyebrow">
-        Unidad Educativa Católica La Victoria
+        UNIDAD EDUCATIVA CATÓLICA LA VICTORIA
       </div>
 
       <div class="hero-line"></div>
 
       <h1>
-        Bienvenidos a<br>
+        Bienvenidos a
         <span>La Victoria Verde</span>
       </h1>
 
@@ -552,68 +703,176 @@ a {
         más consciente y sostenible.
       </p>
 
+      <a href="#conversacion" class="hero-button">
+        Conocer EcoBot <span>→</span>
+      </a>
+
     </div>
 
   </section>
 
 
-  <!-- TEMAS -->
+  <!-- CLASIFICACIÓN DE RESIDUOS -->
 
-  <section>
+  <section class="section">
 
     <div class="section-header">
 
+      <div class="section-kicker">
+        CONCIENCIA AMBIENTAL
+      </div>
+
       <h2 class="section-title">
-        Explora nuestros temas
+        Pequeñas acciones, grandes cambios
       </h2>
 
       <p class="section-description">
-        Descubre, aprende y participa con EcoBot.
+        Aprender a clasificar los residuos es el primer
+        paso para construir espacios más limpios y responsables.
       </p>
 
     </div>
 
-    <div class="topics">
+    <div class="editorial">
 
-      <a class="topic" href="#conversacion">
-        <span class="topic-number">01 / AMBIENTE</span>
-        <span class="topic-name">
-          Clasificación de residuos
-        </span>
-        <span class="topic-arrow">↗</span>
-      </a>
+      <img
+        src="./images/residuos.jpg"
+        alt="Clasificación de residuos"
+        class="editorial-image"
+      >
 
-      <a class="topic" href="#conversacion">
-        <span class="topic-number">02 / ECOLOGÍA</span>
-        <span class="topic-name">
-          Cuidado del medio ambiente
-        </span>
-        <span class="topic-arrow">↗</span>
-      </a>
+      <div class="editorial-content">
 
-      <a class="topic" href="#conversacion">
-        <span class="topic-number">03 / EDUCACIÓN</span>
-        <span class="topic-name">
-          Proyectos STEAM
-        </span>
-        <span class="topic-arrow">↗</span>
-      </a>
+        <div class="editorial-number">01 / AMBIENTE</div>
 
-      <a class="topic" href="#conversacion">
-        <span class="topic-number">04 / INNOVACIÓN</span>
-        <span class="topic-name">
-          Ideas creativas
-        </span>
-        <span class="topic-arrow">↗</span>
-      </a>
+        <h3>
+          Una correcta clasificación comienza con nosotros.
+        </h3>
 
-      <a class="topic" href="#conversacion">
-        <span class="topic-number">05 / INFORMACIÓN</span>
-        <span class="topic-name">
-          Preguntas frecuentes
-        </span>
-        <span class="topic-arrow">↗</span>
-      </a>
+        <p>
+          Conocer los diferentes tipos de residuos y
+          aprender a separarlos correctamente permite
+          reducir la contaminación y fomentar hábitos
+          responsables dentro y fuera de nuestra institución.
+        </p>
+
+        <a href="#conversacion" class="editorial-link">
+          Consultar con EcoBot <span>→</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CUIDADO DEL MEDIO AMBIENTE -->
+
+  <section class="section">
+
+    <div class="editorial reverse">
+
+      <div class="editorial-content">
+
+        <div class="editorial-number">02 / SOSTENIBILIDAD</div>
+
+        <h3>
+          Cuidar nuestro entorno es responsabilidad de todos.
+        </h3>
+
+        <p>
+          Promover una cultura ambiental significa
+          desarrollar conciencia, adoptar buenas prácticas
+          y participar activamente en el cuidado de
+          nuestro entorno natural.
+        </p>
+
+        <a href="#conversacion" class="editorial-link">
+          Aprende con EcoBot <span>→</span>
+        </a>
+
+      </div>
+
+      <img
+        src="./images/ambiente.jpg"
+        alt="Cuidado del medio ambiente"
+        class="editorial-image"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- INNOVACIÓN Y STEAM -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <div class="section-kicker">
+        EDUCACIÓN E INNOVACIÓN
+      </div>
+
+      <h2 class="section-title">
+        Aprender, crear e innovar
+      </h2>
+
+      <p class="section-description">
+        La educación también es un espacio para experimentar,
+        investigar y desarrollar soluciones creativas.
+      </p>
+
+    </div>
+
+    <div class="gallery">
+
+      <article class="gallery-item">
+
+        <img
+          src="./images/steam.jpg"
+          alt="Proyectos educativos STEAM"
+        >
+
+        <div class="gallery-content">
+
+          <span>03 / PROYECTOS STEAM</span>
+
+          <h3>La creatividad transforma ideas en soluciones.</h3>
+
+          <p>
+            Descubre proyectos que integran ciencia,
+            tecnología, ingeniería, arte y matemática
+            para resolver desafíos del entorno.
+          </p>
+
+        </div>
+
+      </article>
+
+      <article class="gallery-item">
+
+        <img
+          src="./images/tecnologia.jpg"
+          alt="Tecnología e innovación educativa"
+        >
+
+        <div class="gallery-content">
+
+          <span>04 / INNOVACIÓN</span>
+
+          <h3>La tecnología al servicio del aprendizaje.</h3>
+
+          <p>
+            Explora nuevas herramientas, inteligencia
+            artificial y recursos tecnológicos que
+            impulsan la educación.
+          </p>
+
+        </div>
+
+      </article>
 
     </div>
 
@@ -622,25 +881,52 @@ a {
 
   <!-- CHATBOT -->
 
-  <section class="chat-section" id="conversacion">
+  <section class="chat-section section" id="conversacion">
 
     <div class="chat-heading">
 
       <div>
-        <h2>Conversemos</h2>
+
+        <div class="section-kicker">
+          ASISTENTE VIRTUAL INSTITUCIONAL
+        </div>
+
+        <h2>Conversemos con EcoBot</h2>
 
         <p>
-          Escribe tu pregunta y deja que EcoBot te ayude.
+          Escribe tu pregunta y descubre todo lo que
+          puedes aprender con nuestro asistente.
         </p>
+
       </div>
 
       <div class="chat-label">
-        ASISTENTE VIRTUAL
+        ECOBOT LA VICTORIA
       </div>
 
     </div>
 
     <div id="n8n-chat"></div>
+
+  </section>
+
+
+  <!-- IDENTIDAD INSTITUCIONAL -->
+
+  <section class="institutional">
+
+    <div>
+      <h3>La Victoria Verde</h3>
+
+      <p>
+        Educación, innovación y sostenibilidad
+        para construir un futuro mejor.
+      </p>
+    </div>
+
+    <a href="#conversacion" class="hero-button">
+      Hablar con EcoBot →
+    </a>
 
   </section>
 
@@ -662,7 +948,7 @@ a {
 </div>
 
 
-<!-- CONEXIÓN CON N8N -->
+<!-- CONEXIÓN ORIGINAL CON N8N -->
 
 <script type="module">
 
@@ -701,6 +987,11 @@ createChat({
 
 });
 
+</script>
+
+</body>
+</html>
+```
 </script>
 
 </body>
