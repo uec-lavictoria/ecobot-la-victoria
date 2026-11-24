@@ -1,891 +1,982 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#34451F">
-<meta name="description" content="EcoBot La Victoria, asistente ambiental y educativo de la Unidad Educativa Católica La Victoria.">
-<title>EcoBot La Victoria | La Victoria Verde</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#34451F">
+  <meta name="description" content="EcoBot La Victoria: asistente ambiental y educativo de la Unidad Educativa Católica La Victoria.">
+  <title>EcoBot La Victoria | Unidad Educativa Católica La Victoria</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --green:#C0CA2E;
-  --deep:#34451F;
-  --blue:#1676C5;
-  --white:#FFFFFF;
-  --ink:#17243A;
-  --muted:#687386;
-  --soft:#F6F8F1;
-  --line:#E8ECDF;
-  --shadow:0 18px 55px rgba(31,48,20,.12);
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet">
 
-  --chat--color-primary:#34451F;
-  --chat--color-primary-shade-50:#283719;
-  --chat--color-primary-shade-100:#1E2B13;
-  --chat--color-secondary:#1676C5;
-  --chat--color-white:#FFFFFF;
-  --chat--color-light:#F7F8F4;
-  --chat--color-light-shade-50:#EDF0E7;
-  --chat--color-dark:#17243A;
-  --chat--color-medium:#879184;
-  --chat--border-radius:14px;
-  --chat--window--width:100%;
-  --chat--window--height:100%;
-  --chat--header--background:#34451F;
-  --chat--header--color:#FFFFFF;
-  --chat--header--padding:18px 20px;
-  --chat--message--bot--background:#F1F4E8;
-  --chat--message--bot--color:#26351D;
-  --chat--message--user--background:#1676C5;
-  --chat--message--user--color:#FFFFFF;
-  --chat--input--background:#FFFFFF;
-  --chat--input--text-color:#17243A;
-  --chat--input--border:1px solid #E2E8D8;
-  --chat--input--border-radius:13px;
-  --chat--input--send--button--background:#C0CA2E;
-  --chat--input--send--button--color:#26351D;
-  --chat--input--send--button--background-hover:#AEB923;
-  --chat--message--font-size:13px;
-}
+  <style>
+    :root {
+      --green: #C0CA2E;
+      --deep: #34451F;
+      --blue: #1676C5;
+      --white: #FFFFFF;
+      --text: #26331F;
+      --muted: #687260;
+      --soft: #F5F7EF;
+      --line: #E6EAD9;
+      --shadow: 0 18px 50px rgba(37, 54, 25, .09);
+    }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:#fff;
-  color:var(--ink);
-  font-family:"DM Sans",sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* NAVEGACIÓN */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  height:86px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-  padding:0 clamp(22px,4vw,66px);
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid rgba(52,69,31,.09);
-  backdrop-filter:blur(14px);
-}
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
 
-.identity{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  min-width:245px;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.identity img{
-  width:54px;
-  height:54px;
-  object-fit:contain;
-  border-radius:10px;
-}
+    img {
+      max-width: 100%;
+    }
 
-.identity-copy{line-height:1.05}
-.identity-copy strong{
-  display:block;
-  color:var(--ink);
-  font:800 15px/1.05 "Manrope",sans-serif;
-  letter-spacing:-.4px;
-}
-.identity-copy span{
-  display:block;
-  margin-top:5px;
-  color:#657084;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:1.35px;
-}
+    .container {
+      width: min(1200px, calc(100% - 48px));
+      margin: auto;
+    }
 
-.identity-divider{
-  height:42px;
-  width:1px;
-  background:#D8DECE;
-  margin:0 7px;
-}
-.identity-motto{
-  max-width:125px;
-  color:var(--deep);
-  font:600 italic 13px/1.35 "Manrope",sans-serif;
-}
+    /* HEADER */
 
-.nav{
-  display:flex;
-  align-items:center;
-  gap:clamp(16px,2.5vw,38px);
-}
-.nav a{
-  position:relative;
-  padding:10px 0;
-  color:#26334A;
-  font-size:12px;
-  font-weight:700;
-}
-.nav a:hover{color:var(--deep)}
-.nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:2px;
-  width:0;
-  height:3px;
-  border-radius:4px;
-  background:var(--green);
-  transition:width .2s;
-}
-.nav a:hover::after{width:100%}
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(52,69,31,.09);
+    }
 
-.header-cta,.primary-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  border:0;
-  border-radius:999px;
-  background:var(--green);
-  color:#253416;
-  padding:13px 21px;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(192,202,46,.20);
-  transition:transform .2s,box-shadow .2s;
-}
-.header-cta:hover,.primary-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 24px rgba(192,202,46,.28);
-}
+    .nav-container {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
 
-/* PORTADA */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 220px;
+    }
 
-.hero{
-  position:relative;
-  min-height:600px;
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);
-  align-items:center;
-  gap:34px;
-  padding:56px clamp(24px,5vw,78px) 72px;
-  overflow:hidden;
-  isolation:isolate;
-  background:
-    radial-gradient(ellipse at 0% 55%,rgba(192,202,46,.12),transparent 38%),
-    linear-gradient(110deg,#FFFFFF 0%,#FBFCF8 55%,#F1F5E7 100%);
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  width:560px;
-  height:560px;
-  right:25%;
-  top:-280px;
-  border:1px solid rgba(192,202,46,.18);
-  border-radius:50%;
-  box-shadow:0 0 0 35px rgba(192,202,46,.035),0 0 0 75px rgba(192,202,46,.025);
-}
+    .brand-logo {
+      width: 49px;
+      height: 49px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
-.hero-copy{
-  max-width:650px;
-  position:relative;
-  z-index:2;
-}
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:10px 16px;
-  border-radius:999px;
-  background:#F1F5D8;
-  color:var(--deep);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.3px;
-}
-.eyebrow-mark{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 0 4px rgba(192,202,46,.18);
-}
-h1{
-  margin:23px 0 17px;
-  max-width:650px;
-  color:var(--deep);
-  font:800 clamp(43px,5.3vw,76px)/.99 "Manrope",sans-serif;
-  letter-spacing:-3.7px;
-}
-h1 .highlight{color:#81951C}
-h1 .blue{color:var(--blue)}
-.hero-copy p{
-  max-width:550px;
-  margin:0;
-  color:#44516A;
-  font-size:clamp(14px,1.25vw,17px);
-  line-height:1.8;
-}
-.hero-actions{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:13px;
-  margin-top:29px;
-}
-.primary-btn{
-  padding:15px 23px;
-  font-size:13px;
-  background:var(--deep);
-  color:white;
-  box-shadow:0 9px 22px rgba(52,69,31,.17);
-}
-.primary-btn:hover{
-  box-shadow:0 12px 26px rgba(52,69,31,.23);
-}
-.secondary-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:13px 19px;
-  border:1px solid #A9B69A;
-  border-radius:999px;
-  color:var(--deep);
-  font-size:12px;
-  font-weight:800;
-}
-.secondary-btn:hover{
-  background:#F1F5E8;
-  border-color:var(--deep);
-}
-.hero-note{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin-top:27px;
-  color:#71806B;
-  font-size:11px;
-  font-weight:600;
-}
-.hero-note span{color:var(--blue);font-size:16px}
+    .brand-text strong {
+      display: block;
+      color: var(--deep);
+      font: 800 16px "Manrope", sans-serif;
+      letter-spacing: -.5px;
+    }
 
-/* FOTOGRAFÍA */
+    .brand-text span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+    }
 
-.hero-visual{
-  position:relative;
-  min-height:450px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.hero-photo{
-  position:absolute;
-  inset:16px 0 22px 0;
-  overflow:hidden;
-  border-radius:34% 12px 34% 12px;
-  background:#E7ECD9;
-  box-shadow:var(--shadow);
-  transform:rotate(1.2deg);
-}
-.hero-photo img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-}
-.photo-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(0deg,rgba(28,48,20,.42),transparent 48%);
-}
-.photo-caption{
-  position:absolute;
-  left:25px;
-  bottom:24px;
-  color:white;
-  font:700 13px "Manrope",sans-serif;
-}
-.visual-accent{
-  position:absolute;
-  width:120px;
-  height:120px;
-  right:-18px;
-  top:-4px;
-  border:18px solid rgba(192,202,46,.85);
-  border-left-color:transparent;
-  border-bottom-color:transparent;
-  border-radius:50%;
-  transform:rotate(15deg);
-}
-.visual-tag{
-  position:absolute;
-  left:-22px;
-  bottom:2px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:13px 17px;
-  border:1px solid #EDF0E5;
-  border-radius:15px;
-  background:#fff;
-  box-shadow:0 12px 30px rgba(31,48,20,.12);
-  color:var(--deep);
-  font-size:11px;
-  font-weight:800;
-}
-.visual-tag b{
-  display:grid;
-  place-items:center;
-  width:32px;
-  height:32px;
-  border-radius:10px;
-  background:#F1F5D8;
-  font-size:17px;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+    }
 
-/* CONVERSACIÓN */
+    .nav-links a {
+      color: #59634F;
+      font-size: 12px;
+      font-weight: 700;
+      transition: color .2s;
+    }
 
-.conversation-section{
-  position:relative;
-  z-index:5;
-  padding:0 clamp(22px,4vw,64px) 54px;
-  background:linear-gradient(180deg,#F8FAF3 0%,#FFFFFF 100%);
-}
-.conversation-shell{
-  display:grid;
-  grid-template-columns:minmax(0,.72fr) minmax(420px,1.28fr);
-  gap:30px;
-  align-items:stretch;
-  max-width:1390px;
-  margin:0 auto;
-}
-.conversation-intro{padding:37px 8px 20px 0}
-.section-kicker{
-  color:#82921D;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.conversation-intro h2{
-  margin:12px 0 13px;
-  color:var(--deep);
-  font:800 clamp(27px,3vw,39px)/1.1 "Manrope",sans-serif;
-  letter-spacing:-1.5px;
-}
-.conversation-intro p{
-  max-width:430px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-.topic-pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:22px;
-}
-.topic-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 12px;
-  border:1px solid #DDE5CF;
-  border-radius:999px;
-  background:white;
-  color:var(--deep);
-  font-size:10px;
-  font-weight:700;
-}
-.topic-pill span{color:var(--blue);font-size:13px}
+    .nav-links a:hover {
+      color: var(--blue);
+    }
 
-.chat-card{
-  min-height:535px;
-  height:535px;
-  overflow:hidden;
-  border:1px solid #E4E9DC;
-  border-radius:22px;
-  background:#fff;
-  box-shadow:0 20px 55px rgba(34,52,23,.12);
-}
-#n8n-chat{width:100%;height:100%}
-#n8n-chat .chat-layout{
-  width:100%!important;
-  height:100%!important;
-  max-height:100%!important;
-  border:0!important;
-  border-radius:0!important;
-  box-shadow:none!important;
-}
-#n8n-chat .chat-header{min-height:70px}
-#n8n-chat .chat-header h1{
-  font:800 17px "Manrope",sans-serif;
-  letter-spacing:-.3px;
-}
-#n8n-chat .chat-header p{
-  font:500 11px "DM Sans",sans-serif;
-}
-#n8n-chat .chat-message{
-  font-family:"DM Sans",sans-serif;
-  line-height:1.65;
-}
-#n8n-chat .chat-inputs{padding:12px 17px 16px}
-#n8n-chat textarea{
-  font-family:"DM Sans",sans-serif;
-  font-size:13px;
-}
+    .nav-cta {
+      padding: 12px 19px;
+      border-radius: 30px;
+      background: var(--deep);
+      color: white !important;
+    }
 
-/* SECCIONES INSTITUCIONALES */
+    .nav-cta:hover {
+      background: var(--blue);
+    }
 
-.pillars{
-  padding:54px clamp(22px,4vw,64px) 70px;
-  background:#fff;
-}
-.section-heading{
-  max-width:720px;
-  margin:0 auto 30px;
-  text-align:center;
-}
-.section-heading .section-kicker{color:var(--blue)}
-.section-heading h2{
-  margin:10px 0 9px;
-  color:var(--deep);
-  font:800 clamp(26px,3vw,37px)/1.15 "Manrope",sans-serif;
-  letter-spacing:-1.3px;
-}
-.section-heading p{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.7;
-}
-.pillar-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
-  max-width:1390px;
-  margin:auto;
-}
-.pillar{
-  min-height:190px;
-  padding:25px 20px;
-  border:1px solid #EDF0E8;
-  border-radius:18px;
-  background:#fff;
-  box-shadow:0 9px 28px rgba(35,52,22,.055);
-  transition:transform .2s,box-shadow .2s,border-color .2s;
-}
-.pillar:hover{
-  transform:translateY(-5px);
-  box-shadow:0 16px 34px rgba(35,52,22,.10);
-  border-color:#DCE5B9;
-}
-.pillar-icon{
-  display:grid;
-  place-items:center;
-  width:45px;
-  height:45px;
-  border-radius:14px;
-  background:#F1F5D8;
-  color:var(--deep);
-  font-size:22px;
-}
-.pillar:nth-child(2) .pillar-icon{
-  background:#EAF3FB;
-  color:var(--blue);
-}
-.pillar h3{
-  margin:17px 0 7px;
-  color:var(--deep);
-  font:800 15px "Manrope",sans-serif;
-}
-.pillar p{
-  margin:0;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.65;
-}
+    /* HERO */
 
-/* PIE DE PÁGINA */
+    .hero {
+      position: relative;
+      padding: 85px 0 95px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 30%, rgba(192,202,46,.17), transparent 29%),
+        linear-gradient(135deg, #FBFCF7, #F4F7E9);
+    }
 
-.closing{
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-  padding:35px clamp(22px,5vw,75px);
-  color:#fff;
-  background:var(--deep);
-}
-.closing::before{
-  content:"";
-  position:absolute;
-  width:420px;
-  height:420px;
-  right:-100px;
-  top:-300px;
-  border:1px solid rgba(192,202,46,.5);
-  border-radius:50%;
-  box-shadow:0 0 0 30px rgba(192,202,46,.06),0 0 0 65px rgba(192,202,46,.04);
-}
-.closing-brand{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  position:relative;
-}
-.closing-symbol{
-  display:grid;
-  place-items:center;
-  width:55px;
-  height:55px;
-  border:2px solid var(--green);
-  border-radius:50%;
-  color:var(--green);
-  font-size:25px;
-}
-.closing-brand strong{
-  display:block;
-  font:800 23px "Manrope",sans-serif;
-}
-.closing-brand strong span{color:var(--green)}
-.closing-brand small{
-  display:block;
-  margin-top:4px;
-  color:#DCE5D1;
-  font-size:12px;
-  font-style:italic;
-}
-.closing-meta{
-  position:relative;
-  text-align:right;
-  color:#E7EDDF;
-  font-size:12px;
-  line-height:1.7;
-}
-.closing-meta strong{color:#fff;font-size:13px}
-.copyright{
-  padding:13px 22px;
-  text-align:center;
-  color:#8A9483;
-  background:#263719;
-  font-size:10px;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 65px;
+    }
 
-/* RESPONSIVE */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--deep);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
 
-@media(max-width:1050px){
-  .identity-motto,.identity-divider{display:none}
-  .nav{gap:17px}
-  .hero{grid-template-columns:1fr .85fr}
-  .conversation-shell{grid-template-columns:.65fr 1.35fr}
-  .pillar-grid{grid-template-columns:repeat(2,1fr)}
-}
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      background: var(--green);
+      border-radius: 5px;
+    }
 
-@media(max-width:760px){
-  .site-header{height:72px;padding:0 17px}
-  .identity{min-width:0;gap:9px}
-  .identity img{width:43px;height:43px}
-  .identity-copy strong{font-size:12px}
-  .identity-copy span{font-size:7px;letter-spacing:.9px}
-  .nav{display:none}
-  .header-cta{padding:11px 14px;font-size:11px}
-  .hero{
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-    gap:28px;
-    padding:42px 22px 48px;
-  }
-  h1{
-    font-size:clamp(43px,11vw,62px);
-    letter-spacing:-2.8px;
-  }
-  .hero-visual{min-height:300px}
-  .hero-photo{
-    inset:8px 5px 15px 5px;
-    border-radius:25% 12px 25% 12px;
-  }
-  .visual-tag{left:0}
-  .conversation-section{padding:0 16px 40px}
-  .conversation-shell{
-    display:flex;
-    flex-direction:column;
-    gap:17px;
-  }
-  .conversation-intro{padding:28px 4px 0}
-  .conversation-intro h2{font-size:30px}
-  .chat-card{
-    height:560px;
-    min-height:560px;
-    border-radius:17px;
-  }
-  .pillars{padding:43px 17px 48px}
-  .pillar-grid{gap:11px}
-  .pillar{min-height:170px;padding:18px 15px}
-  .pillar h3{font-size:13px}
-  .closing{
-    align-items:flex-start;
-    flex-direction:column;
-    padding:29px 22px;
-  }
-  .closing-meta{text-align:left}
-}
+    .hero h1 {
+      max-width: 650px;
+      margin-top: 23px;
+      color: var(--deep);
+      font: 800 clamp(42px, 5vw, 67px)/1.08 "Manrope", sans-serif;
+      letter-spacing: -3px;
+    }
 
-@media(max-width:390px){
-  .pillar-grid{grid-template-columns:1fr 1fr}
-  .pillar{padding:15px 12px}
-  .pillar h3{font-size:12px}
-  .topic-pill{font-size:9px}
-}
-</style>
+    .hero h1 span {
+      color: #87921D;
+    }
+
+    .hero-description {
+      max-width: 540px;
+      margin-top: 23px;
+      color: #687260;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 23px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--deep);
+      box-shadow: 0 8px 22px rgba(52,69,31,.17);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid #DCE3CE;
+      color: var(--deep);
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: 26px;
+      overflow: hidden;
+      background: #E8EDD9;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-tag {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      padding: 12px 17px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.94);
+      color: var(--deep);
+      font-size: 11px;
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    }
+
+    /* SEPARADOR */
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #7D8A21;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* CONVERSACIÓN */
+
+    .conversation-section {
+      padding: 75px 24px 85px;
+      background: linear-gradient(180deg, #F8FAF3 0%, #FFFFFF 100%);
+    }
+
+    .conversation-shell {
+      display: grid;
+      grid-template-columns: minmax(0,.85fr) minmax(420px,1.15fr);
+      gap: 28px;
+      align-items: stretch;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .conversation-visual {
+      position: relative;
+      min-height: 570px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #E7ECD9;
+      box-shadow: var(--shadow);
+    }
+
+    .conversation-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .conversation-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(25,42,17,.02) 20%,
+        rgba(25,42,17,.24) 52%,
+        rgba(25,42,17,.88) 100%
+      );
+    }
+
+    .conversation-visual-content {
+      position: absolute;
+      z-index: 2;
+      left: 30px;
+      right: 25px;
+      bottom: 32px;
+      color: white;
+    }
+
+    .conversation-visual-content span {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 13px;
+      border-radius: 30px;
+      background: var(--green);
+      color: var(--deep);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    .conversation-visual-content h2 {
+      margin-bottom: 13px;
+      color: white;
+      font: 800 clamp(30px,3vw,43px)/1.08 "Manrope", sans-serif;
+      letter-spacing: -1.5px;
+    }
+
+    .conversation-visual-content p {
+      max-width: 390px;
+      color: rgba(255,255,255,.93);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .chat-card {
+      min-width: 0;
+      height: 570px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    #n8n-chat {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* PERSONALIZACIÓN DEL CHAT N8N */
+
+    :root {
+      --chat--color--primary: #34451F;
+      --chat--color--primary-shade-50: #455B2B;
+      --chat--color--primary--shade-100: #263719;
+      --chat--color--secondary: #C0CA2E;
+      --chat--color--secondary-shade-50: #AEB925;
+      --chat--color--white: #FFFFFF;
+      --chat--color--light: #F7F9F2;
+      --chat--color--light-shade-50: #EEF1E6;
+      --chat--color--light-shade-100: #E2E8D6;
+      --chat--color--medium: #D5DCC8;
+      --chat--color--dark: #26331F;
+      --chat--color--disabled: #A7AE9D;
+      --chat--color--typing: #526047;
+
+      --chat--spacing: 1rem;
+      --chat--border-radius: 13px;
+      --chat--font-family: "DM Sans", sans-serif;
+
+      --chat--window--width: 100%;
+      --chat--window--height: 100%;
+      --chat--window--border-radius: 0;
+      --chat--window--border: none;
+
+      --chat--header--background: #34451F;
+      --chat--header--color: #FFFFFF;
+      --chat--header--padding: 20px;
+      --chat--header--border-top: none;
+      --chat--header--border-bottom: none;
+
+      --chat--message--font-size: 13px;
+      --chat--message--padding: 11px 14px;
+      --chat--message--border-radius: 13px;
+      --chat--message--bot--background: #F0F3E9;
+      --chat--message--bot--color: #34451F;
+      --chat--message--user--background: #34451F;
+      --chat--message--user--color: #FFFFFF;
+
+      --chat--textarea--height: 48px;
+      --chat--input--font-size: 13px;
+      --chat--input--border-radius: 12px;
+      --chat--input--background: #FFFFFF;
+      --chat--input--text-color: #26331F;
+      --chat--input--border: 1px solid #E2E8D6;
+
+      --chat--button--background: #34451F;
+      --chat--button--color: #FFFFFF;
+      --chat--button--background-hover: #1676C5;
+      --chat--button--color-hover: #FFFFFF;
+    }
+
+    #n8n-chat .chat-layout {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #n8n-chat .chat-header {
+      min-height: 75px;
+    }
+
+    #n8n-chat .chat-header h1 {
+      font: 800 17px "Manrope", sans-serif;
+    }
+
+    #n8n-chat .chat-header p {
+      font: 500 11px "DM Sans", sans-serif;
+    }
+
+    /* PILARES INSTITUCIONALES */
+
+    .pillars-section {
+      padding: 90px 24px;
+      background: white;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-top: 14px;
+      color: var(--deep);
+      font: 800 clamp(30px,4vw,43px)/1.15 "Manrope", sans-serif;
+      letter-spacing: -1.5px;
+    }
+
+    .section-heading p {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 19px;
+    }
+
+    .pillar-card {
+      padding: 27px 23px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: white;
+      transition: .25s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--green);
+      box-shadow: var(--shadow);
+    }
+
+    .pillar-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 21px;
+      border-radius: 14px;
+      background: #F0F3DD;
+      color: var(--deep);
+      font-size: 22px;
+    }
+
+    .pillar-card h3 {
+      margin-bottom: 10px;
+      color: var(--deep);
+      font: 800 15px "Manrope", sans-serif;
+    }
+
+    .pillar-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* CIERRE */
+
+    .closing-section {
+      padding: 68px 24px;
+      background: var(--deep);
+    }
+
+    .closing-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .closing-content span {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .closing-content h2 {
+      margin-top: 15px;
+      color: white;
+      font: 800 clamp(28px,4vw,40px)/1.2 "Manrope", sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .closing-content p {
+      max-width: 650px;
+      margin: 17px auto 0;
+      color: rgba(255,255,255,.73);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .closing-content .btn {
+      margin-top: 25px;
+      background: var(--green);
+      color: var(--deep);
+    }
+
+    .closing-content .btn:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      padding: 28px 24px;
+      background: #263719;
+      color: rgba(255,255,255,.75);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-brand {
+      color: white;
+      font: 800 13px "Manrope", sans-serif;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .footer-link {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .hero-grid {
+        gap: 35px;
+      }
+
+      .conversation-shell {
+        grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr);
+      }
+
+      .pillars-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 36px, 600px);
+      }
+
+      .nav-container {
+        min-height: 72px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 43px;
+        height: 43px;
+      }
+
+      .brand-text strong {
+        font-size: 14px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a:not(.nav-cta) {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 10px 15px;
+        font-size: 10px !important;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(39px,10vw,55px);
+        letter-spacing: -2px;
+      }
+
+      .hero-visual {
+        min-height: 340px;
+      }
+
+      .conversation-section {
+        padding: 55px 18px;
+      }
+
+      .conversation-shell {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .conversation-visual {
+        min-height: 420px;
+      }
+
+      .chat-card {
+        width: 100%;
+        height: 600px;
+        min-height: 540px;
+      }
+
+      .pillars-section {
+        padding: 65px 18px;
+      }
+
+      .pillars-grid {
+        gap: 12px;
+      }
+
+      .pillar-card {
+        padding: 20px 16px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .conversation-visual {
+        min-height: 380px;
+      }
+
+      .chat-card {
+        height: 570px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="site-header" id="inicio">
-  <a class="identity" href="#inicio" aria-label="Unidad Educativa Católica La Victoria">
-    <img src="./logo.jpg" alt="Escudo de La Victoria" onerror="this.style.visibility='hidden'">
-    <div class="identity-copy">
-      <strong>UNIDAD EDUCATIVA CATÓLICA</strong>
-      <span>LA VICTORIA</span>
-    </div>
-    <span class="identity-divider"></span>
-    <span class="identity-motto">Educación para un futuro sostenible</span>
-  </a>
+  <!-- ENCABEZADO -->
+  <header class="site-header">
+    <div class="container nav-container">
 
-  <nav class="nav" aria-label="Navegación principal">
-    <a href="#inicio">Inicio</a>
-    <a href="#la-victoria-verde">La Victoria Verde</a>
-    <a href="#steam">STEAM</a>
-    <a href="#conversacion">EcoBot</a>
-  </nav>
-
-  <a class="header-cta" href="#conversacion">
-    <span>❧</span> Habla con EcoBot <span>•••</span>
-  </a>
-</header>
-
-<main>
-
-<section class="hero" id="la-victoria-verde">
-  <div class="hero-copy">
-    <div class="eyebrow">
-      <span class="eyebrow-mark"></span>
-      ASISTENTE AMBIENTAL Y EDUCATIVO
-    </div>
-
-    <h1>
-      Hola, soy<br>
-      <span class="highlight">EcoBot</span>
-      <span class="blue">La Victoria.</span>
-    </h1>
-
-    <p>
-      Estoy aquí para ayudarte a aprender, resolver tus inquietudes
-      y compartir ideas sobre educación, sostenibilidad y cuidado
-      del medio ambiente.
-    </p>
-
-    <div class="hero-actions">
-      <a class="primary-btn" href="#conversacion">
-        ▣ &nbsp; Iniciar conversación <span>→</span>
+      <a class="brand" href="#inicio">
+        <img class="brand-logo" src="./logo.jpg" alt="Logo Unidad Educativa Católica La Victoria">
+        <div class="brand-text">
+          <strong>La Victoria</strong>
+          <span>UNIDAD EDUCATIVA CATÓLICA</span>
+        </div>
       </a>
-      <a class="secondary-btn" href="#steam">
-        <span style="color:var(--blue)">✦</span> Conoce más
-      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#la-victoria-verde">La Victoria Verde</a>
+        <a href="#steam">STEAM</a>
+        <a class="nav-cta" href="#conversacion">Hablar con EcoBot</a>
+      </nav>
+
     </div>
+  </header>
 
-    <div class="hero-note">
-      <span>✳</span>
-      Un espacio para aprender, compartir y construir un futuro sostenible.
-    </div>
-  </div>
+  <main>
 
-  <div class="hero-visual">
-    <div class="visual-accent"></div>
+    <!-- PORTADA -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
 
-    <div class="hero-photo">
-      <img
-        src="./portada.jpeg"
-        alt="Comunidad de la Unidad Educativa Católica La Victoria"
-        onerror="this.parentElement.style.background='linear-gradient(135deg,#dce8c6,#8da65d)'"
-      >
-      <div class="photo-overlay"></div>
-      <div class="photo-caption">
-        Aprendemos hoy para transformar el mañana.
+        <div class="hero-content">
+          <span class="eyebrow">Innovación · Educación · Sostenibilidad</span>
+
+          <h1>
+            Hola, soy <span>EcoBot</span> La Victoria
+          </h1>
+
+          <p class="hero-description">
+            Tu asistente ambiental y educativo. Un espacio para aprender,
+            descubrir nuevas ideas y fortalecer nuestro compromiso con
+            el cuidado del entorno y la construcción de una comunidad
+            más consciente y sostenible.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#conversacion" class="btn btn-primary">
+              Conversar con EcoBot <span>→</span>
+            </a>
+
+            <a href="#la-victoria-verde" class="btn btn-secondary">
+              Conocer el proyecto
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="./portada.jpeg" alt="Imagen ambiental de EcoBot La Victoria">
+          <div class="hero-tag">
+            Unidad Educativa Católica La Victoria
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-    <div class="visual-tag">
-      <b>✦</b>
-      Educación · Innovación · Sostenibilidad
-    </div>
-  </div>
-</section>
+    <!-- CONVERSACIÓN -->
+    <section class="conversation-section" id="conversacion">
+      <div class="conversation-shell">
 
-<section class="conversation-section" id="conversacion">
-  <div class="conversation-shell">
+        <!-- IMAGEN Y MENSAJE -->
+        <div class="conversation-visual">
 
-    <div class="conversation-intro">
-      <div class="section-kicker">ESTAMOS PARA AYUDARTE</div>
+          <img
+            src="./portada.jpeg"
+            alt="Mascota ambiental de EcoBot La Victoria"
+          >
 
-      <h2>Conversemos con EcoBot</h2>
+          <div class="conversation-visual-content">
+            <span>LA VICTORIA VERDE</span>
 
-      <p>
-        Haz tus preguntas y descubre información útil sobre el cuidado
-        del entorno, la clasificación de residuos, la educación y los
-        proyectos que impulsamos en nuestra comunidad educativa.
-      </p>
+            <h2>Conversemos con EcoBot</h2>
 
-      <div class="topic-pills">
-        <span class="topic-pill"><span>✿</span> Educación ambiental</span>
-        <span class="topic-pill"><span>♻</span> Clasificación de residuos</span>
-        <span class="topic-pill"><span>⌘</span> Proyectos STEAM</span>
-        <span class="topic-pill"><span>▤</span> Recursos educativos</span>
+            <p>
+              Estamos aquí para responder tus preguntas y acompañarte
+              en el aprendizaje sobre educación, sostenibilidad,
+              clasificación de residuos y tecnología.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- CHATBOT -->
+        <div class="chat-card">
+          <div id="n8n-chat"></div>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-    <div class="chat-card">
-      <div id="n8n-chat"></div>
-    </div>
+    <!-- LA VICTORIA VERDE -->
+    <section class="pillars-section" id="la-victoria-verde">
 
-  </div>
-</section>
+      <div class="container">
 
-<section class="pillars" id="steam">
-  <div class="section-heading">
-    <div class="section-kicker">LA VICTORIA VERDE</div>
+        <div class="section-heading">
+          <span class="section-label">Nuestro compromiso</span>
 
-    <h2>Aprender para transformar nuestro entorno</h2>
+          <h2>La Victoria Verde</h2>
 
-    <p>
-      Promovemos experiencias que conectan el conocimiento,
-      la creatividad y el compromiso con un futuro sostenible.
-    </p>
-  </div>
+          <p>
+            Promovemos una cultura de aprendizaje, innovación y
+            responsabilidad ambiental mediante experiencias educativas
+            que inspiran a nuestra comunidad a construir un futuro sostenible.
+          </p>
+        </div>
 
-  <div class="pillar-grid">
+        <div class="pillars-grid">
 
-    <article class="pillar">
-      <div class="pillar-icon">♻</div>
-      <h3>Conciencia ambiental</h3>
-      <p>
-        Pequeñas acciones y decisiones responsables que generan
-        grandes cambios en nuestro entorno.
-      </p>
-    </article>
+          <article class="pillar-card">
+            <div class="pillar-icon">♻</div>
+            <h3>Conciencia ambiental</h3>
+            <p>
+              Fomentar hábitos responsables y fortalecer el compromiso
+              con el cuidado del ambiente.
+            </p>
+          </article>
 
-    <article class="pillar">
-      <div class="pillar-icon">✿</div>
-      <h3>Educación sostenible</h3>
-      <p>
-        Aprender, participar y construir hábitos que contribuyan
-        a un mejor mañana.
-      </p>
-    </article>
+          <article class="pillar-card">
+            <div class="pillar-icon">◎</div>
+            <h3>Educación sostenible</h3>
+            <p>
+              Integrar conocimientos y acciones que permitan comprender
+              los desafíos ambientales actuales.
+            </p>
+          </article>
 
-    <article class="pillar">
-      <div class="pillar-icon">⌘</div>
-      <h3>Ciencia y tecnología</h3>
-      <p>
-        Exploramos ideas, herramientas y soluciones mediante
-        la innovación y el aprendizaje.
-      </p>
-    </article>
+          <article class="pillar-card">
+            <div class="pillar-icon">⌘</div>
+            <h3>Ciencia y tecnología</h3>
+            <p>
+              Aprovechar la innovación tecnológica para explorar,
+              investigar y proponer soluciones.
+            </p>
+          </article>
 
-    <article class="pillar">
-      <div class="pillar-icon">✦</div>
-      <h3>Proyectos STEAM</h3>
-      <p>
-        Integramos creatividad, ciencia y tecnología para imaginar
-        y desarrollar nuevas soluciones.
-      </p>
-    </article>
+          <article class="pillar-card">
+            <div class="pillar-icon">✳</div>
+            <h3>Proyectos STEAM</h3>
+            <p>
+              Impulsar el pensamiento creativo, la colaboración y
+              el aprendizaje mediante proyectos interdisciplinarios.
+            </p>
+          </article>
 
-  </div>
-</section>
+        </div>
 
-</main>
+      </div>
+    </section>
 
-<footer>
-  <div class="closing">
+    <!-- STEAM -->
+    <section class="closing-section" id="steam">
+      <div class="closing-content">
 
-    <div class="closing-brand">
-      <div class="closing-symbol">✳</div>
+        <span>APRENDER · CREAR · TRANSFORMAR</span>
+
+        <h2>La educación también transforma nuestro entorno.</h2>
+
+        <p>
+          En la Unidad Educativa Católica La Victoria impulsamos
+          experiencias educativas que conectan el conocimiento,
+          la creatividad, la ciencia y la tecnología con los retos
+          de nuestra comunidad.
+        </p>
+
+        <a href="#conversacion" class="btn">
+          Explorar con EcoBot <span>→</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <div class="footer-content">
+
       <div>
-        <strong>La Victoria <span>Verde</span></strong>
-        <small>Juntos por un mundo mejor.</small>
+        <div class="footer-brand">Unidad Educativa Católica La Victoria</div>
+        <p class="footer-copy">
+          EcoBot La Victoria · Asistente ambiental y educativo
+        </p>
       </div>
+
+      <p class="footer-copy">
+        © <span id="year"></span> Unidad Educativa Católica La Victoria.
+        Todos los derechos reservados.
+      </p>
+
+      <a href="#inicio" class="footer-link">Volver arriba ↑</a>
+
     </div>
+  </footer>
 
-    <div class="closing-meta">
-      <strong>Unidad Educativa Católica La Victoria</strong><br>
-      Educación para un futuro sostenible
-    </div>
+  <!-- CONEXIÓN CON N8N -->
+  <script type="module">
+    import { createChat } from
+      'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
-  </div>
+    createChat({
+      webhookUrl: 'https://victoriaverde.app.n8n.cloud/webhook/bae9d74f-0ff0-4ce4-a6ac-1f8f87c437c9/chat',
+      target: '#n8n-chat',
+      mode: 'fullscreen',
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      loadPreviousSession: true,
+      showWelcomeScreen: false,
+      defaultLanguage: 'es',
 
-  <div class="copyright">
-    © <span id="year"></span> Unidad Educativa Católica La Victoria · EcoBot
-  </div>
-</footer>
+      initialMessages: [
+        '¡Hola! Soy EcoBot La Victoria. 🌿',
+        'Estoy aquí para ayudarte a aprender y compartir ideas sobre educación, sostenibilidad y tecnología. ¿Sobre qué te gustaría conversar?'
+      ],
 
-<script type="module">
-import { createChat } from
-  'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+      i18n: {
+        es: {
+          title: 'EcoBot La Victoria',
+          subtitle: 'Tu asistente ambiental y educativo',
+          footer: '',
+          getStarted: 'Iniciar conversación',
+          inputPlaceholder: 'Escribe tu pregunta aquí...',
+          closeButtonTooltip: 'Cerrar conversación'
+        }
+      }
+    });
 
-createChat({
-  webhookUrl: 'https://victoriaverde.app.n8n.cloud/webhook/bae9d74f-0ff0-4ce4-a6ac-1f8f87c437c9/chat',
-
-  target: '#n8n-chat',
-  mode: 'fullscreen',
-
-  chatInputKey: 'chatInput',
-  chatSessionKey: 'sessionId',
-
-  loadPreviousSession: true,
-  showWelcomeScreen: false,
-  defaultLanguage: 'es',
-
-  initialMessages: [
-    '¡Hola! Soy EcoBot La Victoria. 🌿',
-    'Estoy aquí para ayudarte a aprender y compartir ideas sobre educación, sostenibilidad y tecnología. ¿Sobre qué te gustaría conversar?'
-  ],
-
-  i18n: {
-    es: {
-      title: 'EcoBot La Victoria',
-      subtitle: 'Tu asistente ambiental y educativo',
-      footer: '',
-      getStarted: 'Iniciar conversación',
-      inputPlaceholder: 'Escribe tu pregunta aquí...',
-      closeButtonTooltip: 'Cerrar conversación'
-    }
-  }
-});
-</script>
-
-<script>
-document.getElementById('year').textContent =
-  new Date().getFullYear();
-</script>
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>
