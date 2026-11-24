@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#34451F">
-  <meta name="description" content="EcoBot La Victoria: asistente ambiental y educativo de la Unidad Educativa Católica La Victoria.">
+  <meta name="description" content="EcoBot La Victoria: asistente ambiental de la Unidad Educativa Católica La Victoria.">
   <title>EcoBot La Victoria | Unidad Educativa Católica La Victoria</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +59,9 @@
       margin: auto;
     }
 
-    /* HEADER */
+    /* =========================
+       ENCABEZADO
+    ========================= */
 
     .site-header {
       position: sticky;
@@ -136,7 +138,9 @@
       background: var(--blue);
     }
 
-    /* HERO */
+    /* =========================
+       PORTADA
+    ========================= */
 
     .hero {
       position: relative;
@@ -267,7 +271,9 @@
       box-shadow: 0 8px 25px rgba(0,0,0,.08);
     }
 
-    /* SEPARADOR */
+    /* =========================
+       SEPARADORES
+    ========================= */
 
     .section-label {
       display: inline-flex;
@@ -280,7 +286,9 @@
       text-transform: uppercase;
     }
 
-    /* CONVERSACIÓN */
+    /* =========================
+       CONVERSACIÓN
+    ========================= */
 
     .conversation-section {
       padding: 75px 24px 85px;
@@ -298,7 +306,7 @@
 
     .conversation-visual {
       position: relative;
-      min-height: 570px;
+      min-height: 600px;
       overflow: hidden;
       border-radius: 24px;
       background: #E7ECD9;
@@ -362,9 +370,11 @@
       line-height: 1.8;
     }
 
+    /* TARJETA DEL CHAT */
+
     .chat-card {
       min-width: 0;
-      height: 570px;
+      height: 600px;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -375,9 +385,13 @@
     #n8n-chat {
       width: 100%;
       height: 100%;
+      min-width: 0;
+      font-family: "DM Sans", sans-serif;
     }
 
-    /* PERSONALIZACIÓN DEL CHAT N8N */
+    /* =========================
+       PERSONALIZACIÓN N8N CHAT
+    ========================= */
 
     :root {
       --chat--color--primary: #34451F;
@@ -395,7 +409,7 @@
       --chat--color--typing: #526047;
 
       --chat--spacing: 1rem;
-      --chat--border-radius: 13px;
+      --chat--border-radius: 15px;
       --chat--font-family: "DM Sans", sans-serif;
 
       --chat--window--width: 100%;
@@ -405,24 +419,24 @@
 
       --chat--header--background: #34451F;
       --chat--header--color: #FFFFFF;
-      --chat--header--padding: 20px;
-      --chat--header--border-top: none;
-      --chat--header--border-bottom: none;
+      --chat--header--padding: 20px 23px;
 
-      --chat--message--font-size: 13px;
-      --chat--message--padding: 11px 14px;
-      --chat--message--border-radius: 13px;
+      --chat--message--font-size: 14px;
+      --chat--message--padding: 13px 16px;
+      --chat--message--border-radius: 15px;
       --chat--message--bot--background: #F0F3E9;
       --chat--message--bot--color: #34451F;
       --chat--message--user--background: #34451F;
       --chat--message--user--color: #FFFFFF;
 
-      --chat--textarea--height: 48px;
-      --chat--input--font-size: 13px;
-      --chat--input--border-radius: 12px;
+      --chat--textarea--height: 58px;
+      --chat--input--height: 58px;
+      --chat--input--font-size: 15px;
+      --chat--input--padding: 15px;
+      --chat--input--border-radius: 14px;
       --chat--input--background: #FFFFFF;
       --chat--input--text-color: #26331F;
-      --chat--input--border: 1px solid #E2E8D6;
+      --chat--input--border: 1px solid #DCE4D0;
 
       --chat--button--background: #34451F;
       --chat--button--color: #FFFFFF;
@@ -430,28 +444,151 @@
       --chat--button--color-hover: #FFFFFF;
     }
 
+    /* ESTRUCTURA GENERAL */
+
     #n8n-chat .chat-layout {
+      display: flex !important;
+      flex-direction: column !important;
       width: 100% !important;
       height: 100% !important;
+      min-height: 0 !important;
       max-height: 100% !important;
-      border: 0 !important;
+      border: none !important;
       border-radius: 0 !important;
       box-shadow: none !important;
+      overflow: hidden !important;
     }
 
+    /* ENCABEZADO DEL CHAT */
+
     #n8n-chat .chat-header {
-      min-height: 75px;
+      min-height: 78px !important;
+      padding: 18px 22px !important;
+      background: #34451F !important;
     }
 
     #n8n-chat .chat-header h1 {
-      font: 800 17px "Manrope", sans-serif;
+      color: #FFFFFF !important;
+      font: 800 18px "Manrope", sans-serif !important;
+      letter-spacing: -.3px;
     }
 
     #n8n-chat .chat-header p {
-      font: 500 11px "DM Sans", sans-serif;
+      margin-top: 5px !important;
+      color: rgba(255,255,255,.8) !important;
+      font: 500 12px "DM Sans", sans-serif !important;
     }
 
-    /* PILARES INSTITUCIONALES */
+    /* ÁREA DE MENSAJES */
+
+    #n8n-chat .chat-body {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      background: #FFFFFF !important;
+    }
+
+    #n8n-chat .chat-messages-list {
+      padding: 22px 18px !important;
+    }
+
+    #n8n-chat .chat-message {
+      line-height: 1.65 !important;
+      font-size: 14px !important;
+    }
+
+    /* PIE Y CONTENEDOR DE ESCRITURA */
+
+    #n8n-chat .chat-footer {
+      flex: 0 0 auto !important;
+      width: 100% !important;
+      padding: 17px 19px 20px !important;
+      background: #FFFFFF !important;
+      border-top: 1px solid #E9EDDF !important;
+    }
+
+    #n8n-chat .chat-inputs {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+      min-height: 66px !important;
+      padding: 7px 8px 7px 15px !important;
+      background: #FFFFFF !important;
+      border: 1px solid #DCE4D0 !important;
+      border-radius: 17px !important;
+      box-shadow: 0 4px 15px rgba(52,69,31,.07) !important;
+      transition: border-color .2s, box-shadow .2s !important;
+    }
+
+    #n8n-chat .chat-inputs:focus-within {
+      border-color: #AAB62B !important;
+      box-shadow: 0 0 0 3px rgba(192,202,46,.16) !important;
+    }
+
+    /* CAMPO DE TEXTO */
+
+    #n8n-chat .chat-inputs textarea,
+    #n8n-chat .chat-inputs input,
+    #n8n-chat textarea,
+    #n8n-chat input[type="text"] {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      min-height: 50px !important;
+      height: 50px !important;
+      max-height: 130px !important;
+      padding: 14px 5px !important;
+      margin: 0 !important;
+      color: #26331F !important;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+      resize: none !important;
+      font: 500 15px/1.5 "DM Sans", sans-serif !important;
+    }
+
+    #n8n-chat .chat-inputs textarea::placeholder,
+    #n8n-chat .chat-inputs input::placeholder,
+    #n8n-chat textarea::placeholder {
+      color: #87917D !important;
+      opacity: 1 !important;
+      font-size: 14px !important;
+    }
+
+    /* BOTÓN DE ENVÍO */
+
+    #n8n-chat .chat-inputs button {
+      flex: 0 0 48px !important;
+      width: 48px !important;
+      min-width: 48px !important;
+      height: 48px !important;
+      min-height: 48px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 13px !important;
+      background: #34451F !important;
+      color: #FFFFFF !important;
+      transition: background .2s, transform .2s !important;
+    }
+
+    #n8n-chat .chat-inputs button:hover {
+      background: #1676C5 !important;
+      transform: translateY(-1px);
+    }
+
+    #n8n-chat .chat-inputs button svg {
+      width: 21px !important;
+      height: 21px !important;
+    }
+
+    /* =========================
+       PILARES INSTITUCIONALES
+    ========================= */
 
     .pillars-section {
       padding: 90px 24px;
@@ -523,7 +660,9 @@
       line-height: 1.8;
     }
 
-    /* CIERRE */
+    /* =========================
+       CIERRE STEAM
+    ========================= */
 
     .closing-section {
       padding: 68px 24px;
@@ -569,7 +708,9 @@
       transform: translateY(-2px);
     }
 
-    /* FOOTER */
+    /* =========================
+       PIE DE PÁGINA
+    ========================= */
 
     .site-footer {
       padding: 28px 24px;
@@ -602,7 +743,9 @@
       font-weight: 700;
     }
 
-    /* RESPONSIVE */
+    /* =========================
+       DISEÑO RESPONSIVE
+    ========================= */
 
     @media (max-width: 950px) {
       .hero-grid {
@@ -691,8 +834,39 @@
 
       .chat-card {
         width: 100%;
-        height: 600px;
-        min-height: 540px;
+        height: 620px;
+        min-height: 560px;
+      }
+
+      #n8n-chat .chat-header {
+        min-height: 72px !important;
+        padding: 16px 17px !important;
+      }
+
+      #n8n-chat .chat-footer {
+        padding: 13px 12px 15px !important;
+      }
+
+      #n8n-chat .chat-inputs {
+        min-height: 62px !important;
+        padding: 6px 7px 6px 12px !important;
+      }
+
+      #n8n-chat .chat-inputs textarea,
+      #n8n-chat .chat-inputs input,
+      #n8n-chat textarea,
+      #n8n-chat input[type="text"] {
+        min-height: 48px !important;
+        height: 48px !important;
+        font-size: 14px !important;
+      }
+
+      #n8n-chat .chat-inputs button {
+        flex-basis: 45px !important;
+        width: 45px !important;
+        min-width: 45px !important;
+        height: 45px !important;
+        min-height: 45px !important;
       }
 
       .pillars-section {
@@ -723,7 +897,7 @@
       }
 
       .chat-card {
-        height: 570px;
+        height: 600px;
       }
 
       .hero-actions {
@@ -733,6 +907,11 @@
 
       .hero-actions .btn {
         width: 100%;
+      }
+
+      .conversation-visual-content {
+        left: 22px;
+        right: 22px;
       }
     }
   </style>
@@ -807,7 +986,6 @@
     <section class="conversation-section" id="conversacion">
       <div class="conversation-shell">
 
-        <!-- IMAGEN Y MENSAJE -->
         <div class="conversation-visual">
 
           <img
@@ -821,9 +999,9 @@
             <h2>Conversemos con EcoBot</h2>
 
             <p>
-              Estamos aquí para responder tus preguntas y acompañarte
-              en el aprendizaje sobre educación, sostenibilidad,
-              clasificación de residuos y tecnología.
+              Conoce cómo clasificar los residuos, descubre iniciativas
+              ambientales y aprende a contribuir al proyecto La Victoria Verde.
+              Estamos aquí para orientarte.
             </p>
           </div>
 
@@ -949,26 +1127,29 @@
 
     createChat({
       webhookUrl: 'https://victoriaverde.app.n8n.cloud/webhook/bae9d74f-0ff0-4ce4-a6ac-1f8f87c437c9/chat',
+
       target: '#n8n-chat',
       mode: 'fullscreen',
+
       chatInputKey: 'chatInput',
       chatSessionKey: 'sessionId',
+
       loadPreviousSession: true,
       showWelcomeScreen: false,
       defaultLanguage: 'es',
 
       initialMessages: [
-        '¡Hola! Soy EcoBot La Victoria. 🌿',
-        'Estoy aquí para ayudarte a aprender y compartir ideas sobre educación, sostenibilidad y tecnología. ¿Sobre qué te gustaría conversar?'
+        '¡Hola! 🌿 Soy EcoBot La Victoria, tu asistente ambiental y educativo.',
+        'Para comenzar, ¿podrías indicarme tus nombres completos?'
       ],
 
       i18n: {
         es: {
           title: 'EcoBot La Victoria',
-          subtitle: 'Tu asistente ambiental y educativo',
+          subtitle: 'Tu asistente de La Victoria Verde',
           footer: '',
           getStarted: 'Iniciar conversación',
-          inputPlaceholder: 'Escribe tu pregunta aquí...',
+          inputPlaceholder: 'Escribe tu mensaje aquí...',
           closeButtonTooltip: 'Cerrar conversación'
         }
       }
@@ -980,3 +1161,4 @@
 
 </body>
 </html>
+
