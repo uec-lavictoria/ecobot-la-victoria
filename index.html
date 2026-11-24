@@ -314,40 +314,48 @@
         radial-gradient(circle at 50% 32%, rgba(192,202,46,.28), transparent 45%),
         linear-gradient(145deg, #F5F8E8, #E7ECD9);
       box-shadow: var(--shadow);
+      isolation: isolate;
     }
 
-    /* GIF ANIMADO DE ECOBOT */
+    /* GIF ANIMADO DE ECOBOT - TAMAÑO CORREGIDO */
 
     .conversation-visual .ecobot-gif {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding: 25px 25px 185px;
+      top: -5%;
+      left: -5%;
+      width: 110%;
+      height: 110%;
+      max-width: none;
+      padding: 0;
+      margin: 0;
       display: block;
       object-fit: contain;
-      object-position: center;
+      object-position: center 38%;
+      transform: scale(1.28);
+      transform-origin: center 38%;
       z-index: 1;
     }
+
+    /* DEGRADADO PARA LEGIBILIDAD DEL TEXTO */
 
     .conversation-visual::after {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
       background: linear-gradient(
         180deg,
-        rgba(25,42,17,0) 40%,
-        rgba(25,42,17,.08) 60%,
-        rgba(25,42,17,.78) 100%
+        rgba(25,42,17,0) 35%,
+        rgba(25,42,17,.03) 48%,
+        rgba(25,42,17,.35) 70%,
+        rgba(25,42,17,.88) 100%
       );
     }
 
     .conversation-visual-content {
       position: absolute;
-      z-index: 2;
+      z-index: 3;
       left: 32px;
       right: 28px;
       bottom: 36px;
@@ -774,6 +782,10 @@
       .nav-links {
         gap: 16px;
       }
+
+      .conversation-visual .ecobot-gif {
+        transform: scale(1.20);
+      }
     }
 
     @media (max-width: 760px) {
@@ -852,11 +864,27 @@
       }
 
       .conversation-visual {
-        min-height: 440px;
+        min-height: 540px;
       }
 
       .conversation-visual .ecobot-gif {
-        padding: 15px 15px 165px;
+        top: -3%;
+        left: -7%;
+        width: 114%;
+        height: 106%;
+        object-position: center 34%;
+        transform: scale(1.25);
+        transform-origin: center 35%;
+      }
+
+      .conversation-visual::after {
+        background: linear-gradient(
+          180deg,
+          rgba(25,42,17,0) 40%,
+          rgba(25,42,17,.10) 55%,
+          rgba(25,42,17,.52) 75%,
+          rgba(25,42,17,.90) 100%
+        );
       }
 
       .conversation-visual-content {
@@ -951,11 +979,17 @@
       }
 
       .conversation-visual {
-        min-height: 390px;
+        min-height: 500px;
       }
 
       .conversation-visual .ecobot-gif {
-        padding: 10px 10px 155px;
+        top: -2%;
+        left: -9%;
+        width: 118%;
+        height: 104%;
+        object-position: center 33%;
+        transform: scale(1.22);
+        transform-origin: center 34%;
       }
 
       .chat-card {
